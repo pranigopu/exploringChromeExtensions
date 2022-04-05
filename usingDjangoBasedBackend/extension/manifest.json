@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "version": "1",
+    "name": "Pythension",
+    "description": "Learning to connect Chrome extension to server running Django.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Pythension"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "http://127.0.0.1:8000"
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "version": "1",
+    "name": "Never gonna give you up...",
+    "description": "Learning to enable communication between the various browser extension scripts.",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "permissions": ["activeTab"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

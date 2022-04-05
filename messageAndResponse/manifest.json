@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "version": "1",
+    "name": "Lynx",
+    "description": "Learning to enable communication between the various browser extension scripts.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Lynx"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "permissions": ["tabs"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

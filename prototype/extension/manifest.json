@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "version": "1",
+    "name": "Beta",
+    "description": "It's on, boys.",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Beta"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "http://127.0.0.1:8000"
+    ]
+}
