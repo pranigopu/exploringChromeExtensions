@@ -33,6 +33,14 @@ CSP by default prevents execution of inline script, due to the danger of script 
 ### REFERENCES:
 - Why is inline script & style execution dangerous?<br>https://content-security-policy.com/unsafe-inline/
 
+## Accessing & changing DOM
+You may already know that you can alter the DOM made from an HTML document through the JavaScript code included in the document. However, you must be careful about whether you are dealing with an HTML collection or an HTML element.
+<br><br>
+For example, if you want to access and alter the 'html' element of the DOM, you may use 'getElementByTag("html)' and think that since there is only one 'html' element in the DOM, you will get an HTML element. But in fact, you get an HTML collection with only one element! Hence, to access the element itself, you may do:
+```
+htmlElement = getElementByTag("html)[0]
+```
+
 ## Waiting for responses from asynchronous functions
 JavaScript is synchronous by default, and may not wait long enough for a response from an asynchronous function. This is because an asynchronous function (ex. a callback or a promise-based function) can execute in parallel, and allows the JavaScript code block from where the asynchronous function was called to continue executing. This can lead to the following error:
 ```
@@ -82,3 +90,9 @@ If 'await' is applied for the last expression executed by the parent async funct
 - https://exploringjs.com/impatient-js/ch_async-functions.html
 - https://www.w3schools.com/js/js_async.asp
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+
+## Adding HTML elements to a DOM
+We can either reassign the inner HTML of an element, or we can use `document.createElement(<tagName>)` followed by `<parent element>.appendChild()`, or some variation of (using 'insertBefore' or other similar functions). The issue with the former approach is that the i-frames that contain advertisements are loaded again, reducing the performance of the addition of HTML elements to the desired element in the DOM. The latter approach avoids this issue.
+
+## JavaScript switch-case interesting points
+- Works with string expressions too
