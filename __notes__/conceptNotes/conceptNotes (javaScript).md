@@ -55,3 +55,46 @@ Furthermore, An HTML collection is always a live collection that dynamically ref
 
 ### REFERENCES:
 - https://www.w3schools.com/jsref/met_document_queryselector.asp
+
+## Importing and exporting JavaScript modules
+### AMD module
+**AMD** => **A**synchronous **M**odule **D**efinition.<br>
+This is a specification for the programming language JavaScript. It defines an API that defines code modules and their dependencies, and loads them asynchronously if desired. Implementations of AMD provide the following benefits:
+
+- Website performance improvements, since AMD implementations load smaller JavaScript files, and only when they are needed.
+- Fewer page errors, since AMD implementations allow developers to define dependencies that must load before a module is executed, so the module does not try to use outside code that is not available yet.
+
+#### REFERENCES
+- https://en.wikipedia.org/wiki/Asynchronous_module_definition
+
+## JavaScript objects
+Objects in JavaScript are variables that contain multiple values. Hence, arrays in JavaScript are also processed as objects. Furthermore, objects can have multiple fields/attributes, which can themselves be values, objects or functions. When defining them, we can give these attributes in the same way as we make dictionaries in Python, ex.
+
+```
+let myObject = {
+    "attribute1": value1,
+    "attribute2": value3,
+    ...
+};
+```
+Note that the keys i.e. field/attribute names may be given as a string, or may simply be given as it is, as in
+
+```
+let myObject = {
+    attribute1: value1,
+    attribute2: value3,
+    ...
+};
+```
+### Accessing the keys of an Object
+The code for this is
+```
+Object.keys(myObject);
+```
+This will return an array containing all the key names.
+
+#### REFERENCES
+- https://stackoverflow.com/questions/10654992/how-can-i-get-a-collection-of-keys-in-a-javascript-dictionary
+
+### REFERENCES
+- https://www.w3schools.com/js/js_object_definition.asp
