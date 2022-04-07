@@ -58,7 +58,7 @@ Content scripts are files that run in the context of web pages. By using the sta
 <br><br>
 For each open tab, a separate instance of the content script (i.e. separate process based on the content script source code) is created (provided the browser extension is active). Content scripts are **injected** into a tab, either through the **manifest.json** file (under the **content_script** field) or through the background service worker.
 <br><br>
-A content script has full access to the DOM of a webpage, so you can do things like alter content, styles, layout, images, anything that is on the page. In other words, a content script deals specifically with the contents of the webpage, and not the browser in general. You can access the DOM in the content script's source code through the 'document' object and its attributes and methods available in JavaScript. For example...
+A content script has full access to the DOM of a webpage, so you can do things like alter content, styles, layout, images, anything that is on the page. In other words, a content script deals specifically with the contents of the webpage, and not the browser in general. This is because a content script is injected into the DOM of the webpage (i.e. it becomes a part of the script for the DOM). You can access the DOM in the content script's source code through the 'document' object and its attributes and methods available in JavaScript. For example...
 `document.getElementByTagName("h1");`
 ... will obtain all the "h1" elements of the current webpage (on which the extension is active).
 <br><br>
@@ -97,7 +97,9 @@ For allowing it to run on all URLs, you would add:
     }
 ]
 ```
-Content scripts can access Chrome APIs used by their parent extension by exchanging messages with the extension. They can also access the URL of an extension's file with 'chrome.runtime.getURL()' and use the result the same as other URLs.
+Note that the content scripts of an extension (that have been registered in the above manner) can directly access each others' functions, global variables, class definitions and objects.
+<br><br>
+Content scripts can access Chrome APIs used by their parent extension. They can also access the URL of an extension's file with 'chrome.runtime.getURL()' and use the result in the same way as other URLs.
 <br><br>
 Note that 
 
