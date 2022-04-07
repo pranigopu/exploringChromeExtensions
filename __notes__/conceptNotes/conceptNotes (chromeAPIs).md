@@ -1,4 +1,4 @@
-# CONCEPT NOTES (JavaScript APIs)
+# CONCEPT NOTES (Chrome APIs)
 JavaScript APIs are browser APIs available for the client-side JavaSCript code that are built into a given web browser (Chrome in our case) that help exposing data from the browser (ex. browser pages, tabs and actions) and computer environment (ex. local databases and scripts) and perform useful operations on them.
 
 ## Callback
