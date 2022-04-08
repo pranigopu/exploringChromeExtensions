@@ -24,6 +24,7 @@ _Also applies for chrome.tabs.sendMessage_ <br><br>
 This argument is a callback, which executes upon receiving a response from the receiver of the message that was sent. It can have at most one argument (you can define more, but they won't be used, since the sent reponse (as seen later) will only contain one argument's worth of data), which will by default store the data passed in the response.
 <br><br>
 For example...
+
 ```
 chrome.runtime.sendMessage(
         message,
