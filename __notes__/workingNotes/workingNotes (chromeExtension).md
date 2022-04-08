@@ -18,6 +18,7 @@ A content script can access the DOM of the webpage that has been loaded (provide
 
 ## Making content script react to browser actions
 If you want to execute some code in the content script (to manipulate the DOM) whenever the user triggers the browser action, you need to use "messaging". A message is a JavaScript object (of your own design) that you send from the background service worker / background script to the content script. For example:
+
 ```
 // IN BACKGROUND SCRIPT
 function buttonClicked(tab){
@@ -27,7 +28,9 @@ function buttonClicked(tab){
   chrome.tabs.sendMessage(tab.id, msg);
 }
 ```
+
 Then, in the content script, you can receive the message and perform an action. Lots of data comes in with the message, but the actual object you send is the one denoted by the request variable. For example:
+
 ```
 // IN CONTENT SCRIPT
 // Listen for messages
@@ -40,6 +43,7 @@ function receiver(request, sender, sendResponse) {
   }
 }
 ```
+
 SEE ALSO:
 - Omnibox
 
