@@ -1,5 +1,5 @@
-# CONCEPT NOTES (JavaScript APIs)
-JavaScript APIs are browser APIs available for the client-side JavaSCript code that are built into a given web browser (Chrome in our case) that help exposing data from the browser (ex. browser pages, tabs and actions) and computer environment (ex. local databases and scripts) and perform useful operations on them.
+# CONCEPT NOTES (Chrome APIs) (JavaScript)
+Chrome APIs are browser APIs available for the client-side scripts (in particular JavaScript codes) that are built into a given web browser (Chrome in our case) that help exposing data from the browser (ex. browser pages, tabs and actions) and computer environment (ex. local databases and scripts) and perform useful operations on them.
 
 ## Callback
 A callback is any reference to executable code that is passed as an argument to other code. In other words, the other code is expected to call back the code at a given time.
@@ -38,16 +38,16 @@ A promise has 4 possible states:
 
 ### Promise construction
 A promise object can be created using the promise constructor, which follows the following syntax:
-<br>
-`var <promise object> = new Promise(<function>)`
-<br>
+
+```var <promise object> = new Promise(<function>)```
+
 where the function in the constructor takes two optional arguments, which are generally named resolve and reject (these names are chosen to indicate the nature of these arguments, but you may give any name).
 <br><br>
 These arguments 'resolve' (i.e. 'fulfill') and 'reject' are themselves functions (hence callbacks, since they are passed as arguments). Their names and definitions can be changed based on the programmer, but the first function, when called, fulfills the promise, and the second function, when called, rejects the promise.
 <br><br>
 
 **NOTES ON RESOLVE AND REJECT**:<br>
-_Note that resolve and reject refer to the first and second arguments of the callback function of the promise constructor respectively. Their names are not keywords, and can be replaced by the programmer._
+_Note that resolve and reject refer to the first and second arguments of the callback function of the promise constructor respectively. Their names are not keywords, and can be replaced with any valid identifier by the programmer._
 
 - Order in which they are passed as arguments matters
 - Order in which they appear within the callback does not matter
@@ -60,11 +60,9 @@ _Note that resolve and reject refer to the first and second arguments of the cal
 ### Promise consumers
 A promise, and the data within a promise object, can be further handled (even after resolution or rejection) using the **.then** and **.catch** functions, which are available as attributes for promise objects (i.e. they are defined within the promise class). For these to work, the 'resolve' and 'reject' arguments of the promise constructor's callback (discussed previously) must not be defined (using a function definition).
 <br><br>
-
-**.then** is a function that accepts 1-2 function(s) as argument(s). The first function carries the 'resolve' call, and the second function carries the 'reject' call. These argument functions can have at most one argument each (optional).
+**.then** is a function that accepts 1-2 function(s) as argument(s). The first function carries forward the 'resolve' call, and the second function carries the 'reject' call. These argument functions can have at most one argument each (optional).
 <br><br>
-
-**.catch** is a function that accepts a function as an argument. It can either carry the 'reject' call or handle an error.
+**.catch** is a function that accepts a function as an argument. It can either carry forward the 'reject' call or handle an error.
 
 #### REFERENCES:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
@@ -77,15 +75,17 @@ The runtime API provides methods to support a number of areas of functionality t
 
 ### Message passing
 `chrome.runtime.sendMessage` sends a single message to event listeners within your extension or a different extension. If sending within your extension, omit the 'extensionId' argument. The 'runtime.onMessage' event will be fired in each page in your extension, except for the frame that called 'runtime.sendMessage'. If sending to a different extension, include the 'extensionId' argument set to the other extension's ID. 'runtime.onMessageExternal' will be fired in the other extension. 'runtime.sendMessage' is an asynchronous function that returns a 'Promise' object.
+<br><br>
 If one argument is given, it is the message to send, and the message will be sent internally. if two arguments are given, the arguments are interpreted as (message, options), and the message is sent internally, if the second argument is any of the following:
+
 - a valid options object (i.e. an object which contains only the option properties the browser supports)
 - null
 - undefined
 
-otherwise, the arguments are interpreted as (extensionId, message). The message will be sent to the extension identified by extensionId. If three arguments are given, the arguments are interpreted as (extensionId, message, options). The message will be sent to the extension identified by extensionId.
+Otherwise, the arguments are interpreted as (extensionId, message). The message will be sent to the extension identified by extensionId. If three arguments are given, the arguments are interpreted as (extensionId, message, options). The message will be sent to the extension identified by extensionId.
 <br><br>
-Extensions cannot send messages to content scripts using this method. To send messages to content scripts, use 'tabs.sendMessage'.
-<br><br>
+Extensions scripts cannot send messages to content scripts using this method. To send messages to content scripts, use 'tabs.sendMessage'.
+
 #### REFERENCES:
 https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage
 
@@ -94,6 +94,7 @@ These methods let you retrieve several specific pieces of metadata about the ext
 
 ### Other functionalities
 Other options (not relevant to me right now)
+
 - Managing extension lifecycle and options
 - Device restart support
 - Helper utilities
@@ -104,7 +105,6 @@ Other options (not relevant to me right now)
 ## fetch
 The JavaScript **fetch** method is used to make a request to server (maybe through an API) using a URL for a particular webpage or endpoint in the server, and load the information to or from the webpage or endpoint. The request can be made for any APIs that return data in the format JSON or XML.
 <br><br>
-
 The syntax for **fetch** is as follows:
 `fetch(url, options)`
 , where
@@ -112,9 +112,8 @@ The syntax for **fetch** is as follows:
 - url =>  URL to which the request is to be made
 - options => an dictionary or array of properties
 
-**NOTE**: Without options, **fetch** will always act as a get request.
+**NOTE**: Without options, **fetch** will by default act as a get request.
 <br><br>
-
 The return value of **fetch** returns a promise object. It returns a promise, whether it is resolved or not. The return data can be of the format JSON or XML, and can be an array of objects or simply a single object.
 
 ### REFERENCES
@@ -125,7 +124,7 @@ CORS => **C**ross-**O**rigin **R**esource **S**haring
 <br><br>
 A CORS policy specifies the settings that can be applied to resources to allow resource sharing between for web applications hosted at different origins/domains. A request for a resource outside of the origin is known as a cross-origin request.
 <br><br>
-CORS in particular is a mechanism that uses an additional HTTP header (applied to an HTTP request made from one web application to another) to inform the browser to allow a web application running at one origin/domain have permission to access selected resources from a server at a different origin/domain.
+CORS in particular is a mechanism that uses an additional HTTP header (applied to an HTTP request made from one web application to another) to inform the browser to allow a web application running at one origin/domain have permission to access selected resources from a server at a different origin/domain. The CORS policy is always applied from the receiver's end.
 <br><br>
 Note that you can create your own CORS policies for your API or website.
 
