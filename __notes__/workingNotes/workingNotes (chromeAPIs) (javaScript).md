@@ -1,4 +1,4 @@
-# WORKING NOTES (JavaScript APIs)
+# WORKING NOTES (Chrome APIs) (JavaScript)
 ## NOTE ON NAMING FORMAL ARGUMENTS OF CALLBACKS
 The arguments discussed for the callbacks are not keywords, unless otherwise specified, i.e. any name can be given to them, provided they are passed in the appropriate order. However, for convenience, we usually use the above names as the formal arguments of our callback definitions.
 
@@ -14,7 +14,7 @@ _Why is cannot be used for pop-ups or background service workers..._
 - To allow the extension to access all tabs, you must give the permission 'tabs' in the 'manifest.json' file.
 
 ## Anatomy of chrome.runtime.sendMessage
-__Also applies for chrome.tabs.sendMessage__ <br><br>
+_Also applies for chrome.tabs.sendMessage_ <br><br>
 `chrome.runtime.sendMessage` can have the following optional arguments:
 
 - message (to be sent)
@@ -35,7 +35,7 @@ function getResponse(response){
 ```
 
 ## Anatomy of a chrome.runtime.onMessage event listener callback
-__Also applies for chrome.tabs.sendMessage__ <br><br>
+_Also applies for chrome.tabs.sendMessage_<br><br>
 To detect an `onMessage` event, we add a listener for this event using `chrome.runtime.onMessage.addListener(<callback>)`.
 <br><br>
 The callback (i.e. the function that whose call will be triggered upon event) here has three optional arguments:
@@ -54,6 +54,7 @@ This argument is a callback that, if called but undefined, can be used to:
 - send a single object as response
 
 For example, in a background script...
+
 ```
 chrome.runtime.onMessage.addListener(respondToMessage);
 function respondToMessage(message, sender, sendResponse){
@@ -61,6 +62,7 @@ function respondToMessage(message, sender, sendResponse){
     sendResponse("Hello from the other side!");
 }
 ```
+
 Here, we see that sendResponse has not been defined anywhere, and takes on some default definition. I am not too sure about the exact mechanism.
 
 ## Sending multiple messages
@@ -69,15 +71,18 @@ I found that, when trying to send messages from popup script to content script a
 ## Making cross-origin requests (i.e. from one domain to another)
 ## Notes on implementation
 When trying to make requests from extension scripts (service worker, specifically) I got the following errors
-<br>**ERROR 1**<br>
+<br>**ERROR 1**
+
 ```
 Access to fetch at 'http://127.0.0.1:8000/alpha/getvowels?userinput=Prani' from origin 'chrome-extension://pehhkdndjcmeebmpmkeofnbaiideooeh' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 ```
-<br>**ERROR 2**<br>
+
+**ERROR 2**
+
 ```
 Uncaught (in promise) TypeError: Failed to fetch
 ```
-<br>
+
 The latter error is due to the former. Furthermore, I haven't included a **.catch** function for my **fetch** function call, so errors are 'uncaught' and handled automatically.
 <br><br>
 From these errors and some reading, I learnt that
