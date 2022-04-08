@@ -4,6 +4,7 @@ In JavaScript, the console is an object which provides access to the browser deb
 
 ## Inline script vs. external script
 Inline script is simply script that is provided within the HTML document. Furthermore, when the DOM is created using the HTML document, references to an external script within HTML elements, such as
+
 - `onclick` option for submit buttons
 - `action` option for form elements
 
@@ -57,6 +58,9 @@ Furthermore, An HTML collection is always a live collection that dynamically ref
 - https://www.w3schools.com/jsref/met_document_queryselector.asp
 
 ## Importing and exporting JavaScript modules
+### Within DOM's context
+If you want a script included as an external script in an HTML document to access the functions, variables, objects or classes of another script, you can simply include the other script as an external script in the same HTML document, before the former script.
+
 ### AMD module
 **AMD** => **A**synchronous **M**odule **D**efinition.<br>
 This is a specification for the programming language JavaScript. It defines an API that defines code modules and their dependencies, and loads them asynchronously if desired. Implementations of AMD provide the following benefits:
@@ -77,6 +81,7 @@ let myObject = {
     ...
 };
 ```
+
 Note that the keys i.e. field/attribute names may be given as a string, or may simply be given as it is, as in
 
 ```
@@ -88,9 +93,11 @@ let myObject = {
 ```
 ### Accessing the keys of an Object
 The code for this is
+
 ```
 Object.keys(myObject);
 ```
+
 This will return an array containing all the key names.
 
 #### REFERENCES
