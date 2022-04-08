@@ -1,6 +1,33 @@
 # CONCEPT NOTES (JavaScript)
 ## Console
-In a web scripting language, the console is an object which provides access to the browser debugging console.
+In a web scripting langauge, the console is an object which provides access to the browser debugging console.
+
+## Anonymous functions in JavaScript
+Functions in JavaScript can be anonymous.
+
+```
+function() {
+  alert('unicorn!');
+}
+```
+
+And if you put that whole anonymous function in parentheses and then add parentheses after it, it’s a self-executing function. Meaning it’s called the moment it’s defined.
+
+```
+(function() {
+  alert('unicorn!');
+})();
+```
+
+If your code is complicated and long it’s often simpler to just put it in another JS file and reference it like so:
+
+```
+(function () {
+  var script = document.createElement('script');
+  script.src = 'someRandomCode.js';
+  document.body.appendChild(script);
+})();
+```
 
 ## Inline script vs. external script
 Inline script is simply script that is provided within the HTML document. Furthermore, when the DOM is created using the HTML document, references to an external script within HTML elements, such as
