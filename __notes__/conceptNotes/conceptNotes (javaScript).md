@@ -1,6 +1,6 @@
 # CONCEPT NOTES (JavaScript)
 ## Console
-In JavaScript, the console is an object which provides access to the browser debugging console.
+In a web scripting language, the console is an object which provides access to the browser debugging console.
 
 ## Inline script vs. external script
 Inline script is simply script that is provided within the HTML document. Furthermore, when the DOM is created using the HTML document, references to an external script within HTML elements, such as
