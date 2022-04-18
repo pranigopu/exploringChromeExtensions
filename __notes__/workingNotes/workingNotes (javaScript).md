@@ -1,6 +1,6 @@
 # WORKING NOTES (JavaScript)
 ## Loading DOM before script
-Consider an HTML document that includes a script that contains code requiring access to certain elements of the DOM, or event handlers associated with events of certain elements of the DOM. Also consider that these event handlers require accessing elements from the DOM. To ensure proper interpretation of the JavaScript code _(JavaScript is interpreted, not compiled, which is what makes it an effective web development scripting language)_, we must make sure the DOM gets loaded before the script, so that the interpretation happens without errors _(for example, if the DOM is not loaded before the script and the script requires access to some element in the DOM, a NULL value is returned instead of the required element)_. To do this, we can simply include the script after the required elements present in the HTML document's body element.
+Consider an HTML document that includes a script that contains code requiring access to certain elements of the DOM, or event handlers associated with events of certain elements of the DOM. Also, consider that these event handlers need to access elements from the DOM. To ensure proper interpretation of the JavaScript code _(JavaScript is interpreted, not compiled, which is what makes it an effective web development scripting language)_, we must make sure the DOM gets loaded before the script, so that the interpretation happens without errors _(for example, if the DOM is not loaded before the script and the script requires access to some element in the DOM, a NULL value is returned instead of the required element)_. To do this, we can simply include the script after the required elements present in the HTML document's body element.
 
 ### REFERENCES:
 - https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null
@@ -49,7 +49,7 @@ where
 This is necessary when calling an asynchronous function (such as a promise constructor), which would normally allow the parent function's code to continue executing even when its results are not delivered. But this becomes an issue when you want to use the return value of this called function in a later code. If the value is not available yet, the variable supposed to hold that value or a value derived from that value will be undefined. To avoid this and wait for the called function to deliver its results, we use await.
 <br><br>
 **NOTE 1**:<br>
-'await' can only be used inside an async function within regular JavaScript code, but can be used on its own with JavaScript modules.
+'await' can only be used inside an async function within regular JavaScript code, but can be used on its own within JavaScript modules.
 <br><br>
 
 **NOTE 2**:<br>
