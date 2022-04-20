@@ -31,7 +31,7 @@ function respondToMessage(message, sender, sendResponse){
     // Resolving the promise containing the Response object
     .then(function(response){
         // Inspecting return value of fetch in the console
-        console.log("Return value of fetch: ", response)
+        console.log("Response from fetch: ", response)
         /*
         We see that response is a Response object (which was contained in the promise object returned by fetch).
         This object contains the JSON data required, obtained below...
@@ -41,7 +41,7 @@ function respondToMessage(message, sender, sendResponse){
         res = response.json();
 
         // Inspecting res in console
-        console.log("JSON of return value of fetch: ", res);
+        console.log("JSON from response: ", res);
         /*
         We see that res i.e. the return value of response.json()
         is a promise object, that is in the 'pending' state.
@@ -55,7 +55,7 @@ function respondToMessage(message, sender, sendResponse){
     })
     // Resolving the promise containing the JSON object
     .then(d => {
-        console.log("Response-worthy data: ", d);
+        console.log("JSON data: ", d);
         sendResponse(d);
     });
     /*
