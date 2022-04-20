@@ -27,7 +27,7 @@ function respondToMessage(message, sender, sendResponse){
     console.log("Endpoint URL:", url)
     //------------------------------------
     // Sending response back to popup.js
-    fetch(url)
+    fetch(url) // Retuns a promise that resolves with a response object
     // Resolving the promise containing the response object
     .then(function(response){
         // Inspecting return value of fetch in the console
@@ -38,7 +38,7 @@ function respondToMessage(message, sender, sendResponse){
         */
         
         // Obtaining a promise containing the JSON object within the Response object
-        res = response.json();
+        res = response.json(); // Returns a promise that resolves with a JSON object
 
         // Inspecting res in console
         console.log("JSON from response: ", res);
