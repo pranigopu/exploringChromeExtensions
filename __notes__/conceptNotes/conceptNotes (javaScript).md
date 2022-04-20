@@ -230,6 +230,8 @@ A fetch call does not directly return the JSON response body, but a promise that
 The response object, in turn, does not directly contain the actual JSON response body, but a representation of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the .json() method, which returns another promise that resolves with a JSON object (i.e. the resolution of the promise will result in a JSON object).
 <br><br>
 This is why we use two consecutive **.then** calls, since we are essentially peeling the layers of the response object contained in the fetched promise, to finally obtain the JSON data that we need.
+<br><br>
+**REMEMBER**: resolution of a promise happens through a callback defined within the promise object, which by default returns certain data.
 
 ### REFERENCES
 - https://www.geeksforgeeks.org/javascript-fetch-method/
