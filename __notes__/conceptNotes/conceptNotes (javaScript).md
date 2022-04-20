@@ -210,8 +210,8 @@ A promise, and the data within a promise object, can be further handled (even af
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using\_promises
 - https://www.geeksforgeeks.org/javascript-promises/
 
-## fetch
-The JavaScript **fetch** method is used to make a request to server (maybe through an API) using a URL for a particular webpage or endpoint in the server, and load the information to or from the webpage or endpoint. The request can be made for any APIs that return data in the format JSON or XML.
+## Fetch API
+The JavaScript fetch API, which is called using the **fetch** method, is used to make a request to any resource, using a URL (for a particular webpage in a website or endpoint in a server), and load the information to or from the webpage or endpoint. The request can be made for any APIs that return data in the format JSON or XML. Note that fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP.
 <br><br>
 The syntax for **fetch** is as follows:
 `fetch(url, options)`
@@ -222,7 +222,12 @@ The syntax for **fetch** is as follows:
 
 **NOTE**: Without options, **fetch** will by default act as a get request.
 <br><br>
-The return value of **fetch** returns a promise object. It returns a promise, whether it is resolved or not. The return data can be of the format JSON or XML, and can be an array of objects or simply a single object.
+The return value of **fetch** returns a promise object. It returns a promise, whether it is resolved or not. The return data wihthin the promise can be of the format JSON or XML, and can be an array of objects or simply a single object.
+
+### Note on the processing of return of fethc
+A fetch call does not directly return the JSON response body, but a promise that resolves with a Response object (i.e. the resolution of the promise will result in a Response object).
+<br><br>
+The Response object, in turn, does not directly contain the actual JSON response body, but a representation of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the .json() method, which returns another promise that resolves with a JSON object (i.e. he resolution of the promise will result in a JSON object).
 
 ### REFERENCES
 - https://www.geeksforgeeks.org/javascript-fetch-method/
