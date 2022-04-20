@@ -27,7 +27,7 @@ function hear(message, sender, sendResponse){
     //====================================
     // PROMISE WITH CONSUMERS
     // Using only .then to carry forward resolve and reject
-    var promise3 = new Promise(function(fun1, fun2) {
+    var promise2 = new Promise(function(fun1, fun2) {
         var a = message.a
         var b = message.b
         if((a + b) % 2 == 0){
@@ -36,7 +36,7 @@ function hear(message, sender, sendResponse){
             fun2("Is odd.");
         }
       }); 
-    promise3.
+    promise2.
         then(function(arg1){
             console.log(arg1);
         }, function(arg1){
@@ -44,7 +44,7 @@ function hear(message, sender, sendResponse){
         });
     //------------------------
     // Using other data types and number of arguments
-    var promise4 = new Promise(function(fun1, fun2) {
+    var promise3 = new Promise(function(fun1, fun2) {
         var a = message.a
         var b = message.b
         if((a + b) % 2 == 0){
@@ -54,7 +54,7 @@ function hear(message, sender, sendResponse){
         }
       }); 
     // Only the first argument of the following will be defined
-    promise4.
+    promise3.
         then(function(arg1, arg2){
             console.log(arg1, arg2);
         })
