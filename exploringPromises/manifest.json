@@ -3,9 +3,7 @@
     "version": "1",
     "name": "Never gonna give you up...",
     "description": "Learning about promises in JavaScript.",
-    "action": {
-        "default_title": "Rick"
-    },
+    "action": {},
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
