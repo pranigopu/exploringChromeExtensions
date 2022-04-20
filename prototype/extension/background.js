@@ -28,12 +28,12 @@ function respondToMessage(message, sender, sendResponse){
     //------------------------------------
     // Sending response back to popup.js
     fetch(url)
-    // Resolving the promise containing the Response object
+    // Resolving the promise containing the response object
     .then(function(response){
         // Inspecting return value of fetch in the console
         console.log("Response from fetch: ", response)
         /*
-        We see that response is a Response object (which was contained in the promise object returned by fetch).
+        We see that response is a response object (which was contained in the promise object returned by fetch).
         This object contains the JSON data required, obtained below...
         */
         
