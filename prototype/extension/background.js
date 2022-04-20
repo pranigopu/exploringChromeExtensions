@@ -22,28 +22,40 @@ function respondToMessage(message, sender, sendResponse){
     let url = serverhost + "alpha/"; // Base URL, including the web application URL;
 
     // Endpoint URL based on the requested service (from the popup script)
-        url = url + message.doFunction + "?targeturl=" + message.targeturl + "&userinput=" + message.userinput;
+        url = url + message.operation + "?targeturl=" + message.targeturl + "&userinput=" + message.userinput;
     // Viewing the URL for confirmation in the console
     console.log("Endpoint URL:", url)
     //------------------------------------
     // Sending response back to popup.js
     fetch(url)
+    // Resolving the promise containing the Response object
     .then(function(response){
+        // Inspecting return value of fetch in the console
+        console.log("Return value of fetch: ", response)
+        /*
+        We see that response is a Response object (which was contained in the promise object returned by fetch).
+        This object contains the JSON data required, obtained below...
+        */
+        
+        // Obtaining a promise containing the JSON object within the Response object
         res = response.json();
+
         // Inspecting res in console
-        console.log(res);
+        console.log("JSON of return value of fetch: ", res);
         /*
         We see that res i.e. the return value of response.json()
         is a promise object, that is in the 'pending' state.
         To resolve this promise object, we use the following .then call.
+        The resolution of this object will give the JSON data required.
         */
     
         // Returning this promise object makes it accessible outside the current scope
         // Hence we can apply the following .then call
         return res;
     })
+    // Resolving the promise containing the JSON object
     .then(d => {
-        console.log(d);
+        console.log("Response-worthy data: ", d);
         sendResponse(d);
     });
     /*
