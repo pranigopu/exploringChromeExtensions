@@ -2,7 +2,10 @@
     "manifest_version": 3,
     "version": "1",
     "name": "Never gonna give you up...",
-    "description": "Learning to enable communication between the various browser extension scripts.",
+    "description": "Learning about promises in JavaScript.",
+    "action": {
+        "default_title": "Rick"
+    },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
