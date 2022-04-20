@@ -224,10 +224,12 @@ The syntax for **fetch** is as follows:
 <br><br>
 The return value of **fetch** returns a promise object. It returns a promise, whether it is resolved or not. The return data wihthin the promise can be of the format JSON or XML, and can be an array of objects or simply a single object.
 
-### Note on the processing of return of fethc
-A fetch call does not directly return the JSON response body, but a promise that resolves with a Response object (i.e. the resolution of the promise will result in a Response object).
+### Note on the processing of return of fetch
+A fetch call does not directly return the JSON response body, but a promise that resolves with a response object (i.e. the resolution of the promise will result in a Response object).
 <br><br>
-The Response object, in turn, does not directly contain the actual JSON response body, but a representation of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the .json() method, which returns another promise that resolves with a JSON object (i.e. he resolution of the promise will result in a JSON object).
+The response object, in turn, does not directly contain the actual JSON response body, but a representation of the entire HTTP response. So, to extract the JSON body content from the Response object, we use the .json() method, which returns another promise that resolves with a JSON object (i.e. the resolution of the promise will result in a JSON object).
+<br><br>
+This is why we use two consecutive **.then** calls, since we are essentially peeling the layers of the response object contained in the fetched promise, to finally obtain the JSON data that we need.
 
 ### REFERENCES
 - https://www.geeksforgeeks.org/javascript-fetch-method/
