@@ -1,8 +1,8 @@
 from django.urls import path
 from .views import *
 urlpatterns = [
-    path('scrape', scrape),
-    path('clean', clean),
-    path('normalize', normalize),
-    path('summarize', sortedWordFreq)
+    path('scrape', scrapeEndpoint),
+    path('clean', cleanEndpoint),
+    path('normalize', normalizeEndpoint),
+    path('summarize', scaledWordFreq)
 ]

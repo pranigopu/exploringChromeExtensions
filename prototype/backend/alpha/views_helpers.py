@@ -31,7 +31,7 @@ def saveCSV(fileName, headers, rows):
 #================================================
 # RESPONSE MAKER
 from django.http import JsonResponse
-def confirmation(operationName, hasSucceeded):
+def sendResponse(operationName, hasSucceeded):
     if hasSucceeded == True:
         report = operationName.title() + ' successful!'
         # .title converts process name to title case i.e. only first letter capitalised
@@ -114,10 +114,57 @@ def getArgs(userinput):
 # ABBREVIATION DECONTRACTION FOR WHOLE PHRASE
 import re
 def decontracted(phrase):
+    phrase = phrase.lower()
+
     phrase = re.sub(r"\'re", " are", phrase)
-    phrase = re.sub(r"\'s", " is", phrase)
+    
+    # Expanding irregular shortened negatives
+    # Can't
+    phrase = re.sub(r"can\'t", "cannot", phrase)
+    phrase = re.sub(r"can\st[\.\,\s]+", "cannot", phrase)
+    # Won't
+    phrase = re.sub(r"won\'t", "will not", phrase)
+    phrase = re.sub(r"won\st[\.\,\s]+", "will not ", phrase)
+    # Shan't
+    phrase = re.sub(r"shan\'t", "shall not", phrase)
+    phrase = re.sub(r"shan\st[\.\,\s]+", "shall not ", phrase)
+    """
+    NOTES:
+    I think "won't" and "shan't" i.e. "will not" and "shall not"
+    can be safely replaced by "not" without losing much meaning.
+    """
+    
+    # Expanding regular shortened negatives
+    phrase = re.sub(r"n\'t", " not", phrase)
+    phrase = re.sub(r"n\st[\.\,\s]+", " not ", phrase)
+    
+    # Other shortened forms
     phrase = re.sub(r"\'d", " would", phrase)
     phrase = re.sub(r"\'ll", " will", phrase)
     phrase = re.sub(r"\'ve", " have", phrase)
     phrase = re.sub(r"\'m", " am", phrase)
+    """
+    NOTES:
+    I think "will" can be safely removed without losing much meaning.
+    """
     return phrase
+"""
+NOTE ON SPACING FOR SHORTENED NEGATIVES
+For the second patterns, since you are also checking for potential spaces, periods or commas
+after n\st, you will also be replacing spaces. Hence, make sure you have
+spaces in the substitute text.
+
+WHY THE SECOND PATTERNS FOR SHORTENED NEGATIVES?
+When tokenizing, the Python code treats the
+directed inverted quotes as whitespace characters.
+Hence, "aren’t" would be tokenized into 'are' and 't'.
+Hence, when the data is cleaned, "aren’t" will become "aren t".
+To account for such issues, I have included a second pattern for each abbreviation.
+
+Note that directed inverted quote are often found in online documents,
+as opposed to the directionless quote that is common in code.
+
+NOTE ON SINGLE QUOTES:
+The character U+2019 "’" could be confused with
+the character U+0060 "`", which is more common in source code.
+"""

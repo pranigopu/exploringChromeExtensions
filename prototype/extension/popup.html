@@ -1,18 +1,21 @@
 <html>
-    <h1>Prototype</h1>
+    <body>
+        <h1>Prototype</h1>
 
-    <label for="userinput">Input string: </label>
-    <input id = "userinput", type="text">
-    
-    <label for="command">Command string: </label>
-    <input id = "command", type="text">
-    <br><br>
-    <input id = "go", type="submit" value="GO">
-    <!--NOTE: type="submit" makes it a button-like element-->
+        <label for="userinput">Input string: </label><br>
+        <input id = "userinput", type="text"><br>
+        
+        <label for="command">Command string: </label><br>
+        <input id = "command", type="text">
+        <br><br>
+        <input id = "go", type="submit" value="GO">
+        <!--NOTE: type="submit" makes it a button-like element-->
 
-    <!--Blank paragraph to display basic results-->
-    <i><p id="blank">Hello there!</p></i>
+        <!--Blank paragraph to display basic results-->
+        <i><p id="blank">Hello there!</p></i>
 
-    <!--Script wll be loaded after the rest of the DOM-->
-    <script src="popup.js"></script>
+        <!--Script should be loaded after the rest of the DOM. Hence it is here and not in the head-->
+        <script src="./wordcloud/wordcloud2.js"></script>
+        <script src="popup.js"></script>
+    </body>
 </html>
