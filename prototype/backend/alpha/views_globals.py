@@ -1,14 +1,14 @@
 # DATA FILE NAMES
 # Scraped data CSV file
-SCRAPED = '_scraped'
+SCRAPED = 'data/_scraped'
 # Tokenized data CSV file
-TOKENIZED = '_tokenized'
+TOKENIZED = 'data/_tokenized'
 # Cleaned data CSV file
-CLEANED = '_cleaned'
+CLEANED = 'data/_cleaned'
 # Normalized data CSV file
-NORMALIZED = '_normalized'
+NORMALIZED = 'data/_normalized'
 # Normalized data CSV file where words with unsuitable POS tags for summary are omitted
-SUMMARIZABLE = '_summarizable'
+SUMMARIZABLE = 'data/_summarizable'
 #================================================
 # TEXT PROCESSING RELATED
 # Stopwords (for sentiment analysis purposes)
