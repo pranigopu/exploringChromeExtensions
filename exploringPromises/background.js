@@ -3,5 +3,5 @@ console.log("Background service worker, check.");
 
 chrome.action.onClicked.addListener(shout);
 function shout(tab){
-    chrome.tabs.sendMessage({"a": 2, "b": 5});
+    chrome.tabs.sendMessage(tab.id, {"a": 2, "b": 5});
 }
