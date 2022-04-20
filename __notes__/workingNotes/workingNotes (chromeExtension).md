@@ -1,7 +1,7 @@
 # WORKING NOTES (Chrome extension)
 
 ## Note on browser actions and accessing action events
-In order to access the events of browser and the methods associated with it, you must add an "action" field in the manifest of the extension. Otherwise, the return values of API calls from the `chrome.action` API will return NULL values, and you will not be able to handle events. Hence, for messaging the content script from the pop-up
+In order to access the events of browser and the methods associated with it, you must add an "action" field in the manifest of the extension. Otherwise, clicking the extension's button (i.e. action) will not have any effect. More precisely, the return values of API calls from the `chrome.action` API will return NULL values, and you will not be able to handle events.
 
 ## Effect of pop-ups on browser actions
 If you add a pop-up for your extension, then clicking the button of the extension will not trigger the "onClicked" event.
