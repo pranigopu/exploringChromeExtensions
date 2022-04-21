@@ -92,7 +92,7 @@ Access to fetch at 'http://127.0.0.1:8000/alpha/getvowels?userinput=Prani' from 
 Uncaught (in promise) TypeError: Failed to fetch
 ```
 
-The latter error is due to the former. Furthermore, I haven't included a **.catch** function for my **fetch** function call, so errors are 'uncaught' and handled automatically.
+The latter error is due to the former. I haven't included a **.catch** function for my **fetch** function call, so errors are 'uncaught' and handled automatically.
 <br><br>
 From these errors and some reading, I learnt that
 -  We can make requests from the extension script if we set the 'mode' option in the **fetch** funtion to 'no-cors'<br><br>(**NOTE**:<br> **fetch** has two main arguments, one being the URL to make the requets to, the other being the set of properties to apply to the request... if none are applied, the request is a simple GET request)
