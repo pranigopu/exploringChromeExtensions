@@ -147,13 +147,16 @@ Here, a second task can begin executing in parallel, without waiting for an earl
 A callback is any reference to executable code that is passed as an argument to other code. In other words, the other code is expected to call back the code at a given time.
 
 ## Promise
-A 'Promise' is an object representing the eventual completion or failure of one or more asynchronous operations, such as API calls or HTTP requests. Compared to events and regular callbacks, promises are...
+A 'Promise' is an object representing the eventual completion or failure of one or more asynchronous operations, such as API calls or HTTP requests. In other terms, a promise represents a single asynchronous operation that hasn't completed yet, but is expected to complete in the future. Compared to events and regular callbacks, promises are...
 
 - Easier to manage when dealing with multiple asynchronous operations, where callbacks associated with each operation can create a messy situation and unmanageable code.
 - Better at handling errors
 - Offer better code readability
 
-Essentially, a promise is a returned object to which you attach callbacks (instead of passing callbacks into a function).
+At its most basic level, a promise is an object to which you attach callbacks (instead of passing callbacks into a function).
+
+### Relevance of promise
+JavaScript is a synchronous scripting language, which means the code executes in a strictly sequential manner, and waits for processes to complete before moving on, for the most part. We can have asynchronous functions or processes that do not compel the JavaScript code to wait for a response. This can lead to you obtaining a NULL valued response, even if the asynchronous computation executes correctly, since an asynchronous computation may take more time than the JavaScript code waits for. Promise objects are designed to handle such scenarios. The results of a particular asynchronous computation can be reflected in the associated promise object, whenever it completes. We can use promise handlers (discussed below) to handle the resolution or rejection (success or failure of the associated asynchronous computation), which will be executed asynchronously as JavaScript code.
 
 ### Advantages of using promises
 #### General advantages
