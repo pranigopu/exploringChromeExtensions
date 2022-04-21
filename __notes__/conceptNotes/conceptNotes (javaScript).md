@@ -158,6 +158,9 @@ At its most basic level, a promise is an object to which you attach callbacks (i
 ### Relevance of promise
 JavaScript is a synchronous scripting language, which means the code executes in a strictly sequential manner, and waits for processes to complete before moving on, for the most part. We can have asynchronous functions or processes that do not compel the JavaScript code to wait for a response. This can lead to you obtaining a NULL valued response, even if the asynchronous computation executes correctly, since an asynchronous computation may take more time than the JavaScript code waits for. Promise objects are designed to handle such scenarios. The results of a particular asynchronous computation can be reflected in the associated promise object, whenever it completes. We can use promise handlers (discussed below) to handle the resolution or rejection (success or failure of the associated asynchronous computation), which will be executed asynchronously as JavaScript code.
 
+#### REFERENCES
+- https://stackoverflow.com/questions/39004567/why-do-we-need-promise-in-js
+
 ### Advantages of using promises
 #### General advantages
 - Improves code readability
