@@ -199,12 +199,12 @@ _Note that resolve and reject refer to the first and second arguments of the cal
 - If 'reject' is undefined, it returns an error, and can carried further by the **.catch** function _(discussed later)_
 - Conditions for which they are called do not matter
 
-### Promise consumers
+### Promise handlers
 A promise, and the data within a promise object, can be further handled (even after resolution or rejection) using the **.then** and **.catch** functions, which are available as attributes for promise objects (i.e. they are defined within the promise class). For these to work, the 'resolve' and 'reject' arguments of the promise constructor's callback (discussed previously) must not be defined (using a function definition).
 <br><br>
-**.then** is a function that accepts 1-2 function(s) as argument(s). The first function carries forward the 'resolve' call, and the second function carries the 'reject' call. These argument functions can have at most one argument each (optional).
+**.then** is a function that accepts 1-2 function(s) as argument(s). The first function carries forward the 'resolve' call i.e. it is the callback for when the promise is resolved, and the second function carries the 'reject' call i.e. it is the callback function for when a promise is rejected. These argument functions can have at most one argument each (optional).
 <br><br>
-**.catch** is a function that accepts a function as an argument. It can either carry forward the 'reject' call or handle an error.
+**.catch** is a function that accepts a function as an argument, which is the callback function for when a promise is rejected. Hence, **.catch** can either carry forward the 'reject' call or handle an error in the function returning the promise (by default, a function returning a promise will return a rejected promise on error).
 
 #### REFERENCES:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using\_promises
