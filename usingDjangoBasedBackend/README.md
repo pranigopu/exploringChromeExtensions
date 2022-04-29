@@ -29,7 +29,7 @@ The latter error is due to the former. Furthermore, I haven't included a **.catc
 <br><br>
 From these errors and some reading, I learnt that
 
--  We can make requests from the extension script if we set the 'mode' option in the **fetch** funtion to 'no-cors'<br><br>( **NOTE**: <br> **fetch** has two main arguments, one being the URL to make the requets to, the other being the set of properties to apply to the request... if none are applied, the request is a simple GET request)
+-  We can make requests from the extension script if we set the 'mode' option in the **fetch** funtion to 'no-cors'<br><br>( **NOTE**: **fetch** has two main arguments, one being the URL to make the requets to, the other being the set of properties to apply to the request... if none are applied, the request is a simple GET request)
 -  Requests we make from the extension script using the above option will return an opaque response only i.e. we cannot
   - read response data
   - check request status (to see if it was successful or not)
