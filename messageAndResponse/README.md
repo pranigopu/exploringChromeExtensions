@@ -9,7 +9,7 @@ Introducing popups, and understanding how messaging is done from
 Also, we will see how responses can be sent by the receivers and obtained by the senders.
 
 ## Code aims
-- Present a popup input
+- Presenting a popup input
 - Based on input, sending message from popup script to
     - Content script injected in the active tab
     - Background service worker
