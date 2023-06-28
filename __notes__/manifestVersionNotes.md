@@ -1,7 +1,7 @@
 ## Manifest & manifest version
 Extensions, themes, websites and applications are simply bundles of resources, wrapped up with a manifest.json file that describes the package's contents. In particular, every Chrome extension has a JSON-formatted manifest file, named manifest.json, that provides important information i.e. metadata about your extension.
 <br><br>
-Manifest versions are Chrome browser's rules for browser extensions. Each extensions manifest version update introduces backwards-incompatible changes, supposedly to move the platform forward. The manifest version specifies:
+Manifest versions are Chrome browser's rules for browser extensions. Each manifest version update introduces backwards-incompatible changes, supposedly to move the platform forward. The manifest version specifies:
 
 - The required format for a manifest file
 -  The features available for the manifest file (i.e. the attributes available)
