@@ -15,7 +15,7 @@ Using an external server to host the web applications containing the actual serv
 Additionally, I wanted to add some Python webscraping as a service of the web application, with the service triggered from the extension and the output shown in the computer's terminal.
 
 ## NOTE 1: Cross origin request from extension to server
-When trying to make requests from extension scripts (service worker, specifically) I got the following errors <br>
+When trying to make requests from extension scripts (service worker, specifically) I got the following errors: <br>
 <br> **ERROR 1** <br>
 ```
 Access to fetch at 'http://127.0.0.1:8000/alpha/getvowels?userinput=Prani' from origin 'chrome-extension://pehhkdndjcmeebmpmkeofnbaiideooeh' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
@@ -27,7 +27,7 @@ Uncaught (in promise) TypeError: Failed to fetch
 <br>
 The latter error is due to the former. Furthermore, I haven't included a **.catch** function for my **fetch** function call, so errors are 'uncaught' and handled automatically.
 <br><br>
-From these errors and some reading, I learnt that
+From these errors and some reading, I learnt that:
 
 -  We can make requests from the extension script if we set the 'mode' option in the **fetch** funtion to 'no-cors'<br>( **NOTE**: **fetch** has two main arguments, one being the URL to make the requests to, the other being the set of properties to apply to the request... if none are applied, the request is a simple GET request)
 -  Requests we make from the extension script using the above option will return an opaque response only i.e. we cannot
