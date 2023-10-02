@@ -37,9 +37,9 @@ From these errors and some reading, I learnt that:
 The above clearly presents an undesirable situation.
 
 ### Apparent cause
-To prevent leaks of sensitive information, webpages are generally not allowed to fetch cross-origin data. Unless a valid CORS header is present on the response, the page's request will fail with an error like the one above.
+To prevent leaks of sensitive information, webpages are generally not allowed to fetch cross-origin data (i.e. data accessed from another server host or website). Unless a valid CORS header is present on the response, the page's request will fail with an error like the one above.
 <br><br>
-A valid CORS header in this case would indicate that the requested resource (in whose response the header would be present) (ex. a server host or website) allows requests from other origins (ex. other server hosts or websites) to access its resources (ex. response data)
+A valid CORS header in this case would indicate that the requested resource (in whose response the header would be present) (ex. a server host or website) allows requests from other origins (ex. other server hosts or websites) to access its resources (ex. response data).
 
 ### Reiteration of key point and side notes
 Just to emphasise the point, the extension package and Django-based backend are stored in and run from different domains, hence a request from the extension scripts to the server web application's service is a cross-origin request.
