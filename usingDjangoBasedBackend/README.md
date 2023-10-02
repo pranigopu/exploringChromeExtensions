@@ -44,7 +44,7 @@ A valid CORS header in this case would indicate that the requested resource (in 
 ### Reiteration of key point and side notes
 Just to emphasise the point, the extension package and Django-based backend are stored in and run from different domains, hence a request from the extension scripts to the server web application's service is a cross-origin request.
 <br><br>
-To allow the cross-origin request (from the extension's scripts) to access the requested resource (i.e. the localhost server's web application's service), the server host (my computer's local IP address) must add the appropriate header to its responses, so that there is no issue according to the CORS policy.
+To allow the cross-origin request (from the extension's scripts) to access the requested resource (i.e. the localhost server's web application's service), the server host (my local system, i.e. my computer) must add the appropriate header to its responses, so that there is no issue according to the CORS policy.
 
 ### Solution details
 To handle CORS headers in Python, I installed the `django-cors-headers` package. In the Django-based website's configurations directory (i.e. backend/backend), in the 'settings.py' file, I did the following:
